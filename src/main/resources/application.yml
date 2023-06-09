@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:8888}
+  
+spring:
+  profiles:
+    active:
+    - ${profile:sys}
+  application:
+    name: flyingwngs-configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/SubinBMathew95/FlyingWings-Config.git
+          ignore-local-ssh-settings: true
+          username: SubinBMathew95
+          password: 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
+          default-label: development
+          clone-on-start: true
+          search-paths:
+            - flyingwings-employeemanagementservice
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+       
+
